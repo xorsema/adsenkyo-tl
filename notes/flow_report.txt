@@ -1,0 +1,50 @@
+seeds: 504
+vectors: NMI=$C6DB, RESET=$C100, IRQ=$C808
+
+bank  code-bytes  covered%
+   0         182     1.1
+   1           0     0.0
+   2           0     0.0
+   3         558     3.4
+   4        2342    14.3
+   5           0     0.0
+   6        2808    17.1
+   7       13011    79.4
+
+dispatchers: b3 $9476, b4 $932B, b5 $8276, b7 $C276
+inline jump tables: 45 (397 entries)
+
+invalid opcodes reached: 1
+flow stopped at CDL data (possible inline data after a JSR): 2
+jumps/calls into $8000-$BFFF from fixed bank (bank unknown): 11
+
+bank guesses for fixed-bank -> $8000 calls: 17 (cdl=14, home=3)
+
+-- first 40 conflicts (bank, cpu addr) --
+  b7 $CA4E
+  b7 $CA30
+
+-- first 40 invalid --
+  b7 $E259  op=0B
+
+-- bank guesses (site, kind, target -> bank, basis) --
+  $CDAE table $9BA6 -> bank 6 (cdl)
+  $CDB0 table $9C77 -> bank 6 (cdl)
+  $CDC8 table $9DCE -> bank 6 (cdl)
+  $CFF6 jsr $82F0 -> bank 6 (cdl)
+  $CFFB jsr $832A -> bank 6 (cdl)
+  $D000 jsr $834A -> bank 6 (home)
+  $D01A jsr $82F0 -> bank 6 (cdl)
+  $D01F jsr $832A -> bank 6 (cdl)
+  $D024 jsr $834A -> bank 6 (home)
+  $D036 jsr $82F0 -> bank 6 (cdl)
+  $D03B jsr $832A -> bank 6 (cdl)
+  $D040 jsr $834A -> bank 6 (home)
+  $D236 jsr $8FF6 -> bank 6 (cdl)
+  $D350 table $A006 -> bank 6 (cdl)
+  $D843 jsr $8FF6 -> bank 6 (cdl)
+  $E97C jmp $A53B -> bank 6 (cdl)
+  $EEC0 jsr $8FF6 -> bank 6 (cdl)
+
+-- unresolved bank-switched targets (from, insn, target), unique targets --
+  $80A9 $8320 $8500 $A255 $A2E0 $A60A $A95A $A9D1 $B2C3 $BD00 $BD48
